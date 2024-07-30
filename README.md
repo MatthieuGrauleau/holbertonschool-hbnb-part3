@@ -2,6 +2,29 @@
 
 In this phase, you'll be focusing on the front-end development of your application using HTML5, CSS3, and JavaScript ES6. Your task is to design and implement an interactive user interface that connects with the back-end services you have developed in previous parts of the project.
 
+## Project Structure
+
+```
+/Hbnb/
+│
+├── base_files/
+│   ├── index.html
+│   ├── login.html
+│   └── scripts.js
+│
+└── mock-api/
+    ├── data/
+    │   ├── places.json
+    │   ├── users.json
+    │   ├── cities.json
+    │   └── countries.json
+    │
+    ├── app.py
+    ├── config.py
+    ├── requirements.txt
+    └── README.md
+```
+
 #### Objectives
 
 - Develop a user-friendly interface following provided design specifications.
