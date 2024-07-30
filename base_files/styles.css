@@ -1,0 +1,56 @@
+/* 
+  This is a SAMPLE File to get you started. Follow the instructions on the project to complete the tasks. 
+  You'll probably need to override some of theese styles.
+*/
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+}
+
+body {
+	background-color: #f4f4f4;
+	color: #333;
+}
+
+header {
+	background-color: #ff9800;
+	color: #fff;
+	padding: 1rem;
+}
+nav{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+}
+nav a {
+	color: #fff;
+	text-decoration: none;
+	margin-left: 1rem;
+}
+
+main {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+h1 {
+	margin-bottom: 1rem;
+}
+
+#country-filter {
+	text;
+}
+
+footer {
+	background-color: #ff9800;
+	color: #fff;
+	text-align: center;
+	padding: 1rem;
+}
