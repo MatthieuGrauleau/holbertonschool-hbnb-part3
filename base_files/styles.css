@@ -72,6 +72,26 @@ h1 {
 	cursor: pointer;
 }
 
+.star {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	background: url('star-outline.svg') no-repeat center center;
+	background-size: contain;
+}
+
+.star.filled {
+	background: url('star-filled.svg') no-repeat center center;
+	background-size: contain;
+}
+
+.review {
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
 footer {
 	background-color: #ff9800;
 	color: #fff;
