@@ -1,5 +1,3 @@
-// scripts.js
-
 // Fonction pour extraire l'ID du lieu à partir de l'URL
 function getPlaceIdFromURL() {
 	const urlParams = new URLSearchParams(window.location.search);
@@ -14,14 +12,14 @@ function checkAuthentication() {
 	const addReviewSection = document.getElementById('add-review');
 
 	if (!token) {
-		loginLink.style.display = 'block';
-		logoutButton.style.display = 'none';
-		addReviewSection.style.display = 'none';
+			loginLink.style.display = 'block';
+			logoutButton.style.display = 'none';
+			addReviewSection.style.display = 'none';
 	} else {
-		loginLink.style.display = 'none';
-		logoutButton.style.display = 'block';
-		addReviewSection.style.display = 'block';
-		return token;
+			loginLink.style.display = 'none';
+			logoutButton.style.display = 'block';
+			addReviewSection.style.display = 'block';
+			return token;
 	}
 	return null;
 }
@@ -37,18 +35,23 @@ function getCookie(name) {
 // Fonction pour récupérer les détails du lieu
 async function fetchPlaceDetails(token, placeId) {
 	try {
-		const response = await fetch(`http://localhost:5000/places/${placeId}`, {
-			headers: {
-				'Authorization': token ? `Bearer ${token}` : ''
+			const response = await fetch(`http://localhost:5000/places/${placeId}`, {
+					headers: {
+							'Authorization': token ? `Bearer ${token}` : ''
+					}
+			});
+			if (!response.ok) {
+					throw new Error('Network response was not ok ' + response.statusText);
 			}
-		});
-		if (!response.ok) {
-			throw new Error('Network response was not ok ' + response.statusText);
-		}
-		const data = await response.json();
-		displayPlaceDetails(data);
+			const data = await response.json();
+			displayPlaceDetails(data);
+
+			// Assurez-vous que les avis sont inclus dans la réponse
+			if (data.reviews) {
+					displayPlaceReviews(data.reviews);
+			}
 	} catch (error) {
-		console.error('There was a problem with the fetch operation:', error);
+			console.error('There was a problem with the fetch operation:', error);
 	}
 }
 
@@ -94,6 +97,51 @@ function displayPlaceDetails(place) {
 	placeDetailsSection.appendChild(placeContainer);
 }
 
+// Fonction pour afficher les avis du lieu
+function displayPlaceReviews(reviews) {
+	const reviewsSection = document.getElementById('reviews');
+	reviewsSection.innerHTML = ''; // Clear any existing reviews
+
+	const reviewsTitle = document.createElement('h1');
+	reviewsTitle.textContent = 'Reviews';
+	reviewsSection.appendChild(reviewsTitle);
+	
+
+	reviews.forEach(review => {
+			const reviewContainer = document.createElement('div');
+			reviewContainer.classList.add('review-container');
+
+			// Création et ajout du nom de la personne
+			const reviewerName = document.createElement('p');
+			reviewerName.innerHTML = `<strong>${review.user_name || 'Name unavailable'} :</strong>  `;
+			reviewContainer.appendChild(reviewerName);
+
+			// Création et ajout du commentaire
+			const reviewComment = document.createElement('p');
+			reviewComment.innerHTML = `${review.comment || 'Comment unavailable'}`;
+			reviewContainer.appendChild(reviewComment);
+
+			// Création et ajout du rating
+			const reviewRating = document.createElement('p');
+			reviewRating.innerHTML = `<strong>Rating:</strong> ${getStarRating(review.rating || 0)}`;
+			reviewContainer.appendChild(reviewRating);
+
+			// Ajout du conteneur d'avis à la section des avis
+			reviewsSection.appendChild(reviewContainer);
+	});
+}
+
+// Fonction pour générer le code HTML pour les étoiles de rating
+function getStarRating(rating) {
+	const fullStar = '★'; // Full star symbol
+	const emptyStar = '☆'; // Empty star symbol
+
+	let stars = '';
+	for (let i = 0; i < 5; i++) {
+			stars += i < rating ? fullStar : emptyStar;
+	}
+	return stars;
+}
 
 // Initialisation de la page
 document.addEventListener('DOMContentLoaded', () => {
@@ -101,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	const token = checkAuthentication();
 
 	if (placeId) {
-		fetchPlaceDetails(token, placeId);
+			fetchPlaceDetails(token, placeId);
 	}
 });
-
