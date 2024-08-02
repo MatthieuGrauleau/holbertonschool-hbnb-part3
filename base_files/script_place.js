@@ -60,33 +60,40 @@ function displayPlaceDetails(place) {
 	const placeContainer = document.createElement('div');
 	placeContainer.classList.add('place-container');
 
+	// Création et ajout du nom du lieu
 	const placeName = document.createElement('h1');
 	placeName.textContent = place.id || 'Name unavailable';
-
-	const placeHost = document.createElement('p');
-	placeHost.textContent = `Host: ${place.host_name || 'Host unavailable'}`;
-
-	const placePrice = document.createElement('p');
-	placePrice.textContent = `Price per night: $${place.price_per_night || 'Host unavailable'}`;
-
-	const placeDescription = document.createElement('p');
-	placeDescription.textContent = `Description: ${place.description || 'description unavailable'}`
-	
-	const placeLocation = document.createElement('p');
-	placeLocation.textContent = `Location: ${place.city_name || 'City unavailable'}, ${place.country_name || 'Country unavailable'}`;
-
-	const placeAmenities = document.createElement('p');
-	placeAmenities.textContent = `Amenities: ${place.amenities || 'Amenities unavailable'}`
-
 	placeDetailsSection.appendChild(placeName);
+
+	// Création et ajout du nom de l'hôte
+	const placeHost = document.createElement('p');
+	placeHost.innerHTML = `<strong>Host:</strong> ${place.host_name || 'Host unavailable'}`;
 	placeContainer.appendChild(placeHost);
+
+	// Création et ajout du prix par nuit
+	const placePrice = document.createElement('p');
+	placePrice.innerHTML = `<strong>Price per night:</strong> $${place.price_per_night || 'Price unavailable'}`;
 	placeContainer.appendChild(placePrice);
-	placeContainer.appendChild(placeLocation);
+
+	// Création et ajout de la description
+	const placeDescription = document.createElement('p');
+	placeDescription.innerHTML = `<strong>Description:</strong> ${place.description || 'Description unavailable'}`;
 	placeContainer.appendChild(placeDescription);
+
+	// Création et ajout de la localisation
+	const placeLocation = document.createElement('p');
+	placeLocation.innerHTML = `<strong>Location:</strong> ${place.city_name || 'City unavailable'}, ${place.country_name || 'Country unavailable'}`;
+	placeContainer.appendChild(placeLocation);
+
+	// Création et ajout des équipements
+	const placeAmenities = document.createElement('p');
+	placeAmenities.innerHTML = `<strong>Amenities:</strong> ${place.amenities || 'Amenities unavailable'}`;
 	placeContainer.appendChild(placeAmenities);
-	
+
+	// Ajout du conteneur au conteneur principal
 	placeDetailsSection.appendChild(placeContainer);
 }
+
 
 // Initialisation de la page
 document.addEventListener('DOMContentLoaded', () => {

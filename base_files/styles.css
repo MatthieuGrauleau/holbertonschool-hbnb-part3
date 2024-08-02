@@ -63,6 +63,25 @@ h1 {
 	gap: 15px;
 }
 
+#place-details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.place-container {
+	padding: 2rem;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	width: 100%;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+}
+
 .details-button {
 	background-color: #ff9800;
 	color: #fff;
@@ -72,25 +91,6 @@ h1 {
 	cursor: pointer;
 }
 
-.star {
-	width: 20px;
-	height: 20px;
-	display: inline-block;
-	background: url('star-outline.svg') no-repeat center center;
-	background-size: contain;
-}
-
-.star.filled {
-	background: url('star-filled.svg') no-repeat center center;
-	background-size: contain;
-}
-
-.review {
-	margin-bottom: 15px;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-}
 
 footer {
 	background-color: #ff9800;
