@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					const password = document.getElementById('password').value;
 
 					try {
-							const response = await fetch('http://127.0.0.1:5000/login', {  // Remplacez '/login' par l'URL de votre API si nécessaire
+							const response = await fetch('http://127.0.0.1:5000/login', {  // Change the URL to the correct one
 									method: 'POST',
 									headers: {
 											'Content-Type': 'application/json'
@@ -32,4 +32,3 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 	}
 });
-

@@ -7,6 +7,7 @@ function checkAuthentication() {
 	if (!token) {
 		loginLink.style.display = 'block';
 		logoutButton.style.display = 'none';
+		fetchPlaces(token);
 	} else {
 		loginLink.style.display = 'none';
 		logoutButton.style.display = 'block';
