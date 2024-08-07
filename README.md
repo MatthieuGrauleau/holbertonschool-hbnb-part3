@@ -10,6 +10,9 @@ In this phase, you'll be focusing on the front-end development of your applicati
 ├── base_files/
 │   ├── index.html
 │   ├── login.html
+│   ├── place.html
+│   ├── script_index.js
+│   ├── script_place.html
 │   └── scripts.js
 │
 └── mock-api/
@@ -23,6 +26,7 @@ In this phase, you'll be focusing on the front-end development of your applicati
     ├── config.py
     ├── requirements.txt
     └── README.md
+
 ```
 
 #### Objectives
